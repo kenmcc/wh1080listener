@@ -10,10 +10,13 @@ public:
     WeatherData(void);
     int getInsideTemp(void);
     void setInsideTemp(int);
+    
+    int getPressure(void);
+    void setPressure(int);
     friend ostream& operator << (ostream& os, const WeatherData& d);
     
 private:
-    int insideTemp, outsideTemp;    
+    int insideTemp, outsideTemp, pressure;    
 };
 
 

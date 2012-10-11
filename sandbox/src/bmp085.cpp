@@ -10,17 +10,11 @@ BMP085::BMP085(void)
     lastRecordedTemp = 0;
 }
 
-bool BMP085::readData(void)
+bool BMP085::getData(WeatherData& data)
 {
     cout << "Reading data from BMP" <<endl;
-    return false;
-}
-int BMP085::getPressure(void)
-{
-    return lastRecordedPressure;
-}
-int BMP085::getTemperature(void)
-{
-    return lastRecordedTemp;
+    data.setPressure(1012);
+    data.setInsideTemp(20);
+    return true;
 }
 

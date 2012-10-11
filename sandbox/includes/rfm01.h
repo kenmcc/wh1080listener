@@ -13,12 +13,12 @@ public:
     RFM01(void);
     bool waitForTx(int secondsToWait);
     bool getData(WeatherData& data);
+    void reset(void);
     
 private:
     void initI2c(void);    
-    BMP085 pressureSensor;
     void init(void);
-    void reset(void);
+    
 };
 #endif        //  #ifndef RFM01_H
 

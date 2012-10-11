@@ -15,16 +15,14 @@ bool RFM01::waitForTx(int secondsToWait)
     time_t start, end;
     int timeDif;
     time(&start);
-    cout << "Waiting for " << secondsToWait << "seconds\n";
+    cout << "HighPriority " <<endl;
     do
     {
         sleep(1);
-        pressureSensor.readData();
         time(&end);
         timeDif = (int)difftime(end, start);
-        cout << "Diff is " << timeDif << endl;
     }while( timeDif < secondsToWait);
-    cout << "Finished waiting\n";
+   cout << "low Priority" << endl;
 }
 
 void RFM01::init(void)
@@ -37,6 +35,7 @@ void RFM01::reset(void)
 
 bool RFM01::getData(WeatherData& data)
 {
+    waitForTx(10);
     data.setInsideTemp(2);
     return true;
 }
