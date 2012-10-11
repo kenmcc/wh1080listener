@@ -1,4 +1,5 @@
 #include "rfm01.h"
+#include "bcm2835.h"
 
 
 using namespace std;
@@ -6,6 +7,11 @@ using namespace std;
 RFM01::RFM01(void)
 {
     cout << "Constructed a new class\n";
+    if (!bcm2835_init())
+    {
+        cout << "Failed to init\n" ;
+        return;
+    }
     init();
     reset();
 }

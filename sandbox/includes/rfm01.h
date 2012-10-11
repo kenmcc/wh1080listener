@@ -7,6 +7,8 @@
 #include "bmp085.h"
 #include "weatherdata.h"
 
+#include "rfm01_access.h"
+
 class RFM01
 {
 public:

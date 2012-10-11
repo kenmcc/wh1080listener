@@ -7,7 +7,7 @@
 
 CC=g++
 
-INCLUDES = -I./includes
+INCLUDES = -I./includes -I../bcm2835-1.8/src
 
 SRCDIR:=src
 SOURCES:=$(subst $(SRCDIR)/,,$(wildcard $(SRCDIR)/*.cpp))
@@ -16,8 +16,8 @@ OBJDIR:=objs
 OBJS:=$(addprefix $(OBJDIR)/,$(SOURCES:.cpp=.o))
 
 
-
-LIBFLAGS:=-lm
+LIBS+=-L../bcm2835-1.8/src
+LIBFLAGS:=-lm -lbcm2835
 
 BIN=weatherlogger
 
@@ -25,7 +25,7 @@ all: $(OBJS) $(BIN)
 
 $(BIN):
 	@echo "---linking $(OBJS) ------"
-	$(CC) $(OBJS)  $(LIBFLAGS) -o $(BIN)
+	$(CC) $(OBJS) $(LIBS) $(LIBFLAGS) -o $(BIN)
 
 $(OBJS): | $(OBJDIR)
 
