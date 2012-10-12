@@ -7,7 +7,7 @@
 
 CC=g++
 
-INCLUDES = -I./includes -I../bcm2835-1.8/src
+INCLUDES = -I./includes -I/usr/include/boost
 
 SRCDIR:=src
 SOURCES:=$(subst $(SRCDIR)/,,$(wildcard $(SRCDIR)/*.cpp))
@@ -16,8 +16,8 @@ OBJDIR:=objs
 OBJS:=$(addprefix $(OBJDIR)/,$(SOURCES:.cpp=.o))
 
 
-LIBS+=-L../bcm2835-1.8/src
-LIBFLAGS:=-lm -lbcm2835
+LIBS+=-L/usr/lib64
+LIBFLAGS:=-lm -lboost_program_options
 
 BIN=weatherlogger
 

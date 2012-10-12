@@ -1,17 +1,16 @@
 #include "rfm01.h"
-#include "bcm2835.h"
-
+//#include "hw_access.h"
 
 using namespace std;
 
 RFM01::RFM01(void)
 {
     cout << "Constructed a new class\n";
-    if (!bcm2835_init())
-    {
-        cout << "Failed to init\n" ;
-        return;
-    }
+    //if (!bcm2835_init())
+    //{
+    //    cout << "Failed to init\n" ;
+    //    return;
+    //}
     init();
     reset();
 }
