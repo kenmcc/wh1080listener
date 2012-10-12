@@ -7,7 +7,8 @@
 
 CC=g++
 
-INCLUDES = -I./includes -I/usr/include/boost
+INCLUDES = -I./includes -I/dubfiler2/users/ken.mccullagh/sandbox/weather/wh1080listener/boost/boost_1_51_0
+
 
 SRCDIR:=src
 SOURCES:=$(subst $(SRCDIR)/,,$(wildcard $(SRCDIR)/*.cpp))
@@ -16,8 +17,8 @@ OBJDIR:=objs
 OBJS:=$(addprefix $(OBJDIR)/,$(SOURCES:.cpp=.o))
 
 
-LIBS+=-L/usr/lib64
-LIBFLAGS:=-lm -lboost_program_options
+LIBS+=-L/dubfiler2/users/ken.mccullagh/sandbox/weather/wh1080listener/boost/boost_1_51_0/stage/lib
+LIBFLAGS:=-static -lboost_program_options -lm
 
 BIN=weatherlogger
 

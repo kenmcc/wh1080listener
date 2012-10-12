@@ -7,43 +7,50 @@ namespace po = boost::program_options;
 
 using namespace std;
 
-int setupAndParseCmdLine(int a, char** argv)
+typedef struct CommandLineArgs
 {
+    string logFile;
+    string dataDir;
+}CommandLineArgs;
+
+CommandLineArgs setupAndParseCmdLine(int a, char** argv, CommandLineArgs& args)
+{
+    
     try
     {
-    po::options_description desc("Allowed options");
+    po::options_description desc("Required options");
         desc.add_options()
-            ("L", po::value<string>(), "Set Log File")
-            ("D", po::value<string>(), "Data Directory")
+            ("data_dir,d", po::value<string>(&args.dataDir)->required(), "Data Directory")
+            ("log_file,l", po::value<string>(&args.logFile),                          "Log File")
+
         ;
 
+        if (a == 1 ) 
+        {
+            cout << "Usage : " << argv[0] <<endl<< desc << "\n";
+            exit(0);
+        }
+        
+        
         po::variables_map vm;        
         po::store(po::parse_command_line(a, argv, desc), vm);
         po::notify(vm);    
 
-        if (a == 1) {
-            cout << desc << "\n";
-            exit(0);
-        }
-        
-        if(vm.count("L"))
-        {
-            cout << "Logfile : " << vm["L"].as<string>() << ".\n";
-        }
-        
-        
     }
     catch(exception& e) 
     {
         cerr << e.what() << "\n";
         exit(0);
     }
-    return 0;
+    return args;
 }
 
 int main(int a, char** argv)
 {
-    setupAndParseCmdLine(a, argv);
+    CommandLineArgs args;
+    setupAndParseCmdLine(a, argv, args);
+    cout << "Data Dir :" << args.dataDir << endl;
+    cout << "LogFile : " << args.logFile << endl;
     
     WeatherLogger myWeatherLogger;
     myWeatherLogger.run();
