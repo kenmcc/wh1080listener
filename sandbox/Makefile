@@ -42,7 +42,4 @@ clean:
 	@rm -rf $(BIN)
 	
 
-#objs/wh1080_rf.o:src/wh1080_rf.c 
-#	@echo "Making $<"
-#	gcc -o $@ $<
 
