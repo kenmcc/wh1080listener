@@ -15,7 +15,9 @@
 
 #define LOGGING_INTERVAL  (5)
 
-#define DATA_DIR "/home/pi/weatherlogger-db/data/raw"
+#define DATADIR "/home/pi/weatherlogger-db/data/raw/"
+#define DATABASE "/home/pi/weather.db"
+
 #define USE_BMP085
 #define ALTITUDE_M	210.0f
 
@@ -27,6 +29,10 @@ static uint32_t speed = 1000000;
 static uint16_t delay=0;
 static inited = 0;
 int g_low_threshold = 1000;
+
+char *direction_name[] = {"N", "NNE", "NE", "ENE", "E", "ESE", "SE", "SSE", "S", "SSW", "SW", "WSW", "W", "WNW", "NW", "NNW"};
+
+
 
 uint16_t cmd_reset	= CMD_RESET;
 uint16_t cmd_status = CMD_STATUS;
@@ -112,7 +118,7 @@ void setupChip(void)
 
 void init(void)
 {
-    if(sqlite3_open("/home/pi/weather.db", &db) != 0)
+    if(sqlite3_open(DATABASE, &db) != 0)
     {
        printf("Failed to open DB\n");
         exit (-1);
@@ -473,8 +479,6 @@ struct RSSI rssi_scale[24] = {
 }
 
 
-char *direction_name[] = {"N", "NNE", "NE", "ENE", "E", "ESE", "SE", "SSE", "S", "SSW", "SW", "WSW", "W", "WNW", "NW", "NNW"};
-
 
 
 FILE* create_or_open(void)
@@ -486,11 +490,14 @@ FILE* create_or_open(void)
     timeinfo = localtime ( &now);
     
     char buffer[100];
+    int written = sprintf(buffer, "mkdir -p %s", DATADIR);
     
-    strftime(buffer, 100, "mkdir -p /home/pi/weatherlogger-db/data/raw/%Y/%Y-%m", timeinfo);
+    strftime(buffer+written, 100-written, "%Y/%Y-%m", timeinfo);
     system(buffer);
     
-    strftime(buffer, 100, "/home/pi/weatherlogger-db/data/raw/%Y/%Y-%m/%Y-%m-%d.txt", timeinfo);
+    written = sprintf(buffer, "%s", DATADIR);
+    
+    strftime(buffer+written, 100-written, "%Y/%Y-%m/%Y-%m-%d.txt", timeinfo);
     
     FILE* file = fopen(buffer, "a+");
     if(file != NULL)
