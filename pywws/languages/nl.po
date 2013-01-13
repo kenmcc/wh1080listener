@@ -1,0 +1,237 @@
+# Dutch translations for pywws package.
+# Copyright (C) 2010 Jim Easterbrook
+# This file is distributed under the same license as the pywws package.
+# Rick Sulman <rick@sulman.org>, 2010.
+# 
+msgid ""
+msgstr ""
+"Project-Id-Version: pywws\n"
+"Report-Msgid-Bugs-To: jim@jim-easterbrook.me.uk\n"
+"POT-Creation-Date: 2010-12-25 13:48+0100\n"
+"PO-Revision-Date: 2010-11-27 21:56+0100\n"
+"Last-Translator: root <rick@sulman.org>\n"
+"Language-Team: Dutch\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=ASCII\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: pywws/Plot.py:217
+msgid "Time (%Z)"
+msgstr "Tijd (%Z)"
+
+#: pywws/Plot.py:219
+msgid "Day"
+msgstr "Dag"
+
+#: pywws/Plot.py:221
+msgid "Date"
+msgstr "Datum"
+
+#: pywws/WeatherStation.py:57 pywws/WindRose.py:119
+msgid "N"
+msgstr "N"
+
+#: pywws/WeatherStation.py:57
+msgid "NNE"
+msgstr "NNO"
+
+#: pywws/WeatherStation.py:57
+msgid "NE"
+msgstr "NO"
+
+#: pywws/WeatherStation.py:57
+msgid "ENE"
+msgstr "ONO"
+
+#: pywws/WeatherStation.py:58 pywws/WindRose.py:119
+msgid "E"
+msgstr "O"
+
+#: pywws/WeatherStation.py:58
+msgid "ESE"
+msgstr "OZO"
+
+#: pywws/WeatherStation.py:58
+msgid "SE"
+msgstr "ZO"
+
+#: pywws/WeatherStation.py:58
+msgid "SSE"
+msgstr "ZZO"
+
+#: pywws/WeatherStation.py:59 pywws/WindRose.py:119
+msgid "S"
+msgstr "Z"
+
+#: pywws/WeatherStation.py:59
+msgid "SSW"
+msgstr "ZZW"
+
+#: pywws/WeatherStation.py:59
+msgid "SW"
+msgstr "ZW"
+
+#: pywws/WeatherStation.py:59
+msgid "WSW"
+msgstr "WZW"
+
+#: pywws/WeatherStation.py:60 pywws/WindRose.py:119
+msgid "W"
+msgstr "W"
+
+#: pywws/WeatherStation.py:60
+msgid "WNW"
+msgstr "WNW"
+
+#: pywws/WeatherStation.py:60
+msgid "NW"
+msgstr "NW"
+
+#: pywws/WeatherStation.py:60
+msgid "NNW"
+msgstr "NNW"
+
+#: pywws/WeatherStation.py:67
+msgid "rising very rapidly"
+msgstr "stijgt zeer snel"
+
+#: pywws/WeatherStation.py:69
+#, fuzzy
+msgid "rising quickly"
+msgstr "daalt snel"
+
+#: pywws/WeatherStation.py:71
+msgid "rising"
+msgstr "stijgt"
+
+#: pywws/WeatherStation.py:73
+msgid "rising slowly"
+msgstr "stijgt langzaam"
+
+#: pywws/WeatherStation.py:75
+msgid "falling very rapidly"
+msgstr "daalt zeer snel"
+
+#: pywws/WeatherStation.py:77
+msgid "falling quickly"
+msgstr "daalt snel"
+
+#: pywws/WeatherStation.py:79
+msgid "falling"
+msgstr "daalt"
+
+#: pywws/WeatherStation.py:81
+msgid "falling slowly"
+msgstr "daalt langzaam"
+
+#: pywws/WeatherStation.py:82
+msgid "steady"
+msgstr "stabiel weer"
+
+#: pywws/ZambrettiCore.py:37
+msgid "Settled fine"
+msgstr "Stabiel mooi weer"
+
+#: pywws/ZambrettiCore.py:37
+msgid "Fine weather"
+msgstr "Mooi weer"
+
+#: pywws/ZambrettiCore.py:37
+msgid "Becoming fine"
+msgstr "Wordt mooi weer"
+
+#: pywws/ZambrettiCore.py:38
+msgid "Fine, becoming less settled"
+msgstr "Mooi weer "
+
+#: pywws/ZambrettiCore.py:38
+msgid "Fine, possible showers"
+msgstr "Mooi weer, mogelijk buien"
+
+#: pywws/ZambrettiCore.py:39
+msgid "Fairly fine, improving"
+msgstr "Redelijk weer, wordt beter"
+
+#: pywws/ZambrettiCore.py:39
+msgid "Fairly fine, possible showers early"
+msgstr "Redelijk weer, mogelijk snel neerslag"
+
+#: pywws/ZambrettiCore.py:40
+msgid "Fairly fine, showery later"
+msgstr "Redelijk weer, later neerslag"
+
+#: pywws/ZambrettiCore.py:40
+msgid "Showery early, improving"
+msgstr "Eerst neerslag, later beter weer"
+
+#: pywws/ZambrettiCore.py:41
+msgid "Changeable, mending"
+msgstr "Wisselvallig, wordt beter weer"
+
+#: pywws/ZambrettiCore.py:41
+msgid "Fairly fine, showers likely"
+msgstr "Redelijk weer, grote kans op neerslag"
+
+#: pywws/ZambrettiCore.py:42
+msgid "Rather unsettled clearing later"
+msgstr "Onstabiel weer, later opklaringen"
+
+#: pywws/ZambrettiCore.py:42
+msgid "Unsettled, probably improving"
+msgstr "Onstabiel weer, later beter weer"
+
+#: pywws/ZambrettiCore.py:43
+msgid "Showery, bright intervals"
+msgstr "Neerslag met opklaringen"
+
+#: pywws/ZambrettiCore.py:43
+msgid "Showery, becoming less settled"
+msgstr "Neerslag, wordt onstabiel"
+
+#: pywws/ZambrettiCore.py:44
+msgid "Changeable, some rain"
+msgstr "Wisselvallig, kleine kans op neerslag"
+
+#: pywws/ZambrettiCore.py:44
+msgid "Unsettled, short fine intervals"
+msgstr "Onstabiel weer met opklaringen"
+
+#: pywws/ZambrettiCore.py:45
+msgid "Unsettled, rain later"
+msgstr "Onstabiel weer met later neerslag"
+
+#: pywws/ZambrettiCore.py:45
+msgid "Unsettled, some rain"
+msgstr "Onstabiel weer met neerslag"
+
+#: pywws/ZambrettiCore.py:46
+msgid "Mostly very unsettled"
+msgstr "Zeer onstabiel weer"
+
+#: pywws/ZambrettiCore.py:46
+msgid "Occasional rain, worsening"
+msgstr "Soms regen, wordt slechter weer"
+
+#: pywws/ZambrettiCore.py:47
+msgid "Rain at times, very unsettled"
+msgstr "Regelmatig neerslag, wordt onstabiel"
+
+#: pywws/ZambrettiCore.py:47
+msgid "Rain at frequent intervals"
+msgstr "Regelmatig neerslag"
+
+#: pywws/ZambrettiCore.py:48
+msgid "Rain, very unsettled"
+msgstr "Neerslag, zeer onstabiel weer"
+
+#: pywws/ZambrettiCore.py:48
+msgid "Stormy, may improve"
+msgstr "Stormachtig, wordt beter weer"
+
+#: pywws/ZambrettiCore.py:48
+msgid "Stormy, much rain"
+msgstr "Stormachtig met veel neerslag"
+
+#~ msgid "rising rapidly"
+#~ msgstr "stijgt snel"

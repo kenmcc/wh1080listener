@@ -1,0 +1,112 @@
+#!/usr/bin/env python
+
+"""Test quality of USB connection to weather station
+
+::
+
+%s
+
+The USB link to my weather station is not 100%% reliable. The data
+read from the station by the computer is occasionally corrupted,
+perhaps by interference. I've been trying to solve this by putting
+ferrite beads around the USB cable and relocating possible
+interference sources such as external hard drives. All without any
+success so far.
+
+This program tests the USB connection for errors by continuously
+reading the entire weather station memory (except for those parts that
+may be changing) looking for errors. Each 32-byte block is read twice,
+and if the two readings differ a warning message is displayed. Also
+displayed are the number of blocks read, and the number of errors
+found.
+
+I typically get one or two errors per hour, so the test needs to be
+run for several hours to produce a useful measurement. Note that other
+software that accesses the weather station (such as :doc:`Hourly` or
+:doc:`LiveLog`) must not be run while the test is in progress.
+
+If you run this test and get no errors at all, please let me know.
+There is something good about your setup and I'd love to know what it
+is!
+
+"""
+
+__docformat__ = "restructuredtext en"
+
+__usage__ = """
+ usage: python USBQualityTest.py [options]
+ options are:
+  -h | --help           display this help
+  -v | --verbose        increase amount of reassuring messages
+                        (repeat for even more messages e.g. -vvv)
+"""
+
+__doc__ %= __usage__
+__usage__ = __doc__.split('\n')[0] + __usage__
+
+import getopt
+import sys
+
+from pywws.Logger import ApplicationLogger
+from pywws import WeatherStation
+
+def main(argv=None):
+    if argv is None:
+        argv = sys.argv
+    try:
+        opts, args = getopt.getopt(argv[1:], "hv", ('help', 'verbose'))
+    except getopt.error, msg:
+        print >>sys.stderr, 'Error: %s\n' % msg
+        print >>sys.stderr, __usage__.strip()
+        return 1
+    # check arguments
+    if len(args) != 0:
+        print >>sys.stderr, 'Error: no arguments allowed\n'
+        print >>sys.stderr, __usage__.strip()
+        return 2
+    # process options
+    verbose = 0
+    for o, a in opts:
+        if o in ('-h', '--help'):
+            print __usage__.strip()
+            return 0
+        elif o in ('-v', '--verbose'):
+            verbose += 1
+    # do it!
+    logger = ApplicationLogger(verbose)
+    ws = WeatherStation.weather_station()
+    fixed_block = ws.get_fixed_block()
+    if not fixed_block:
+        print "No valid data block found"
+        return 3
+    # loop
+    ptr = ws.data_start
+    total_count = 0
+    bad_count = 0
+    while True:
+        if total_count % 1000 == 0:
+            active = ws.current_pos()
+        while True:
+            ptr += 0x20
+            if ptr >= 0x10000:
+                ptr = ws.data_start
+            if active < ptr - 0x10 or active >= ptr + 0x20:
+                break
+        result_1 = ws._read_block(ptr, retry=False)
+        result_2 = ws._read_block(ptr, retry=False)
+        if result_1 != result_2:
+            logger.warning('read_block changing %06x', ptr)
+            logger.warning('  %s', str(result_1))
+            logger.warning('  %s', str(result_2))
+            bad_count += 1
+        total_count += 1
+        print "\r %d/%d " % (bad_count, total_count),
+        sys.stdout.flush()
+    print ''
+    return 0
+
+if __name__ == "__main__":
+    try:
+        sys.exit(main())
+    except KeyboardInterrupt:
+        pass

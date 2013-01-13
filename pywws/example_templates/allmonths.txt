@@ -1,0 +1,34 @@
+<table border="1" rules="all">
+  <tr>
+    <th rowspan="3">Month</th>
+    <th colspan="6">Temperature</th>
+    <th rowspan="3">Rainfall</th>
+  </tr>
+  <tr>
+    <th colspan="3">daytime maximum</th>
+    <th colspan="3">nighttime minimum</th>
+  </tr>
+  <tr>
+    <th>highest</th>
+    <th>average</th>
+    <th>lowest</th>
+    <th>highest</th>
+    <th>average</th>
+    <th>lowest</th>
+  </tr>
+#timezone local#
+#monthly#
+#loop 10000#
+  <tr>
+    <td class="right">#start "%B %Y"#</td>
+    <td>#temp_out_max_hi "%.1f &deg;C"#</td>
+    <td>#temp_out_max_ave "%.1f &deg;C"#</td>
+    <td>#temp_out_max_lo "%.1f &deg;C"#</td>
+    <td>#temp_out_min_hi "%.1f &deg;C"#</td>
+    <td>#temp_out_min_ave "%.1f &deg;C"#</td>
+    <td>#temp_out_min_lo "%.1f &deg;C"#</td>
+    <td>#rain "%0.1f mm"#</td>
+  </tr>
+#jump -1#
+#endloop#
+</table>

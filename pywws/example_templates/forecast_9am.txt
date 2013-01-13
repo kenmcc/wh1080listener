@@ -1,0 +1,7 @@
+#hourly#
+#timezone local#
+#roundtime True#
+#jump -8#
+#goto "%Y-%m-%d 08:30:00"#
+#idx "<p>12 hour weather forecast, computed on %a, %d %b at %H:%M %Z: "#
+#calc "Zambretti(params, data)" "%s.<br />NB: this forecast is highly experimental and should not be relied upon.</p>"#
